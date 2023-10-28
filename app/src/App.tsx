@@ -4,8 +4,8 @@ import "./App.css";
 
 function App() {
   return (
-    <main className="bg-amber-100 h-screen">
-      <h1 className="text-center pt-5">ZSC</h1>
+    <main className="bg-amber-100 h-screen font-source">
+      <h1 className="text-center pt-5 text-2xl font-semibold">ZSC</h1>
     </main>
   );
 }
