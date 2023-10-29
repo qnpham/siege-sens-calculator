@@ -20,7 +20,7 @@ function NonScopeInputs(props: customInputType) {
         <input
           type="text"
           className="rounded  sm:h-7  md:h-8  lg:h-10 lg:text-lg bg-slate-200 w-full pl-1"
-          placeholder={e.label}
+          placeholder={e.scope}
         />
       </div>
     );
