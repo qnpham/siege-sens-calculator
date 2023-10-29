@@ -1,15 +1,19 @@
 import React from "react";
 import "./App.css";
 
-const nonScopeInputNames: object[] = [
-  { label: "fov", key: "1" },
-  { label: "aspect ratio", key: "2" },
-  { label: "x factor", key: "3" },
-  { label: "dpi", key: "4" },
-  { label: "multiplier", key: "5" },
-  { label: "hipfire sens", key: "6" },
+type customInputType = {
+  prop: { scope: string; key: string }[];
+};
+
+const nonScopeInputNames = [
+  { scope: "fov", key: "1" },
+  { scope: "aspect ratio", key: "2" },
+  { scope: "x factor", key: "3" },
+  { scope: "dpi", key: "4" },
+  { scope: "multiplier", key: "5" },
+  { scope: "hipfire sens", key: "6" },
 ];
-function NonScopeInputs(props: any) {
+function NonScopeInputs(props: customInputType) {
   const mapped = props.prop.map((e: any) => {
     return (
       <div className="pt-12" key={e.key}>
@@ -31,7 +35,7 @@ const scopeValue1 = [
   { scope: "2.5x", key: "4" },
 ];
 
-function FirstRowScopes(props: any) {
+function FirstRowScopes(props: customInputType) {
   const mapped = props.prop.map((e: any) => {
     return (
       <input
@@ -52,7 +56,7 @@ const scopeValue2 = [
   { scope: "12x", key: "4" },
 ];
 
-function SecondRowScopes(props: any) {
+function SecondRowScopes(props: customInputType) {
   const mapped = props.prop.map((e: any) => {
     return (
       <input
