@@ -1,6 +1,28 @@
 import React from "react";
 import "./App.css";
 
+const nonScopeInputNames: object[] = [
+  { label: "fov", key: "1" },
+  { label: "aspect ratio", key: "2" },
+  { label: "x factor", key: "3" },
+  { label: "dpi", key: "4" },
+  { label: "multiplier", key: "5" },
+  { label: "hipfire sens", key: "6" },
+];
+function NonScopeInputs(props: any) {
+  const mapped = props.prop.map((e: any) => {
+    return (
+      <div className="pt-12">
+        <input
+          type="text"
+          className="rounded bg-slate-200 w-full pl-1"
+          placeholder={e.label}
+        />
+      </div>
+    );
+  });
+  return <>{mapped}</>;
+}
 function App() {
   return (
     <main className="bg-amber-100 h-screen font-source w-full ">
@@ -52,53 +74,7 @@ function App() {
             placeholder="12x"
           />
         </div>
-        <div className="pt-12">
-          <input
-            type="text"
-            className="rounded bg-slate-200 w-full pl-1"
-            placeholder="fov"
-          />
-        </div>
-        <div className="pt-12">
-          <input
-            type="text"
-            className="rounded bg-slate-200 w-full pl-1"
-            placeholder="aspect ratio"
-          />
-        </div>
-        <div className="pt-12">
-          <input
-            type="text"
-            className="rounded bg-slate-200 w-full pl-1"
-            placeholder="x factor"
-          />
-        </div>
-        <div className="pt-12">
-          <input
-            type="text"
-            className="rounded bg-slate-200 w-full pl-1"
-            placeholder="dpi"
-          />
-        </div>
-        <div className="pt-12">
-          <input
-            type="text"
-            className="rounded bg-slate-200 w-full pl-1"
-            placeholder="multiplier"
-          />
-        </div>
-        <div className="pt-12">
-          <input
-            type="text"
-            className="rounded bg-slate-200 w-full pl-1"
-            placeholder="hipfire sens"
-          />
-        </div>
-        <div className="button-container text-center">
-          <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12">
-            CONVERT
-          </button>
-        </div>
+        <NonScopeInputs prop={nonScopeInputNames} />
       </div>
     </main>
   );
