@@ -19,7 +19,7 @@ function NonScopeInputs(props: customInputType) {
       <div className="pt-12" key={e.key}>
         <input
           type="text"
-          className="rounded bg-slate-200 w-full pl-1"
+          className="rounded  sm:h-7  md:h-8  lg:h-10 lg:text-lg bg-slate-200 w-full pl-1"
           placeholder={e.label}
         />
       </div>
@@ -40,7 +40,7 @@ function FirstRowScopes(props: customInputType) {
     return (
       <input
         type="text"
-        className="rounded w-14 bg-slate-200 text-center"
+        className="rounded w-14 sm:w-20 sm:h-7 md:w-24 md:h-8 lg:w-32 lg:h-10 lg:text-lg bg-slate-200 text-center"
         placeholder={e.scope}
         key={e.key}
       />
@@ -61,7 +61,7 @@ function SecondRowScopes(props: customInputType) {
     return (
       <input
         type="text"
-        className="rounded w-14 bg-slate-200 text-center"
+        className="rounded w-14 sm:w-20 sm:h-7 md:w-24 md:h-8 lg:w-32 lg:h-10 lg:text-lg bg-slate-200 text-center"
         placeholder={e.scope}
         key={e.key}
       />
@@ -76,7 +76,9 @@ function App() {
       <form>
         <div className="w-11/12 m-auto">
           <div className="header">
-            <h1 className="text-center pt-4 text-3xl font-semibold">ZSC</h1>
+            <h1 className="text-center pt-4 text-3xl font-semibold md:text-4xl lg:text-5xl">
+              ZSC
+            </h1>
           </div>
 
           <div className="flex flex-wrap justify-between pt-10">
@@ -88,7 +90,7 @@ function App() {
           <NonScopeInputs prop={nonScopeInputNames} />
         </div>
         <div className="button-container text-center">
-          <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12">
+          <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12 sm:w-24 sm:h-11 md:w-32 md:h-12 md:text-xl lg:w-40 lg:h-16 lg:text-2xl">
             CONVERT
           </button>
         </div>
