@@ -70,33 +70,94 @@ function SecondRowScopes(props: customInputType) {
   return <>{mapped}</>;
 }
 
-function App() {
-  return (
-    <main className="bg-amber-100 h-screen font-source w-full ">
-      <form>
-        <div className="w-11/12 m-auto">
-          <div className="header">
-            <h1 className="text-center pt-4 text-3xl font-semibold md:text-4xl lg:text-5xl">
-              ZSC
-            </h1>
-          </div>
+type convertObject = {
+  [key: string]: number;
+};
 
-          <div className="flex flex-wrap justify-between pt-10">
-            <FirstRowScopes prop={scopeValue1} />
-          </div>
-          <div className="flex flex-wrap justify-between pt-8">
-            <SecondRowScopes prop={scopeValue2} />
-          </div>
-          <NonScopeInputs prop={nonScopeInputNames} />
+const convertedRow1: object = [
+  { "1x": 30 },
+  { "2x": 40 },
+  { "3x": 43 },
+  { "5x": 43 },
+];
+
+const convertedRow2: object = [
+  { "1.5x": 30 },
+  { "2.5x": 40 },
+  { "4x": 43 },
+  { "12x": 43 },
+];
+
+function ConvertRow1(props: any) {
+  const mapped = props.prop.map((e: any, i: number) => (
+    <span key={i}>
+      {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
+    </span>
+  ));
+  return mapped;
+}
+
+function ConvertRow2(props: any) {
+  const mapped = props.prop.map((e: any, i: number) => (
+    <span key={i}>
+      {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
+    </span>
+  ));
+  return mapped;
+}
+
+let converted: boolean = true;
+
+function App() {
+  if (converted === false) {
+    return (
+      <main className="bg-amber-100 h-screen font-source w-full ">
+        <div className="header">
+          <h1 className="text-center pt-4 text-3xl font-semibold md:text-4xl lg:text-5xl">
+            ZSC
+          </h1>
         </div>
-        <div className="button-container text-center">
-          <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12 sm:w-24 sm:h-11 md:w-32 md:h-12 md:text-xl lg:w-40 lg:h-16 lg:text-2xl">
-            CONVERT
-          </button>
+        <form>
+          <div className="w-11/12 m-auto">
+            <div className="flex flex-wrap justify-between pt-10">
+              <FirstRowScopes prop={scopeValue1} />
+            </div>
+            <div className="flex flex-wrap justify-between pt-8">
+              <SecondRowScopes prop={scopeValue2} />
+            </div>
+            <NonScopeInputs prop={nonScopeInputNames} />
+          </div>
+          <div className="button-container text-center">
+            <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12 sm:w-24 sm:h-11 md:w-32 md:h-12 md:text-xl lg:w-40 lg:h-16 lg:text-2xl">
+              CONVERT
+            </button>
+          </div>
+        </form>
+      </main>
+      //result screen
+    );
+  } else {
+    return (
+      <main className="bg-amber-100 h-screen font-source w-full">
+        <div className="header">
+          <h1 className="text-center pt-4 text-3xl font-semibold md:text-4xl lg:text-5xl">
+            ZSC
+          </h1>
         </div>
-      </form>
-    </main>
-  );
+        <div className="w-11/12 m-auto">
+          <h1 className="text-center pt-5 text-2xl font-bold">cm/360</h1>
+          <div className="dark-background bg-amber-200 w-80 h-40 m-auto mt-3">
+            <div className="flex justify-around">
+              <ConvertRow1 prop={convertedRow1} />
+            </div>
+            <div className="flex justify-around">
+              <ConvertRow2 prop={convertedRow2} />
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 }
 
 export default App;
