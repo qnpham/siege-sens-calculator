@@ -12,12 +12,11 @@ const nonScopeInputNames: object[] = [
 function NonScopeInputs(props: any) {
   const mapped = props.prop.map((e: any) => {
     return (
-      <div className="pt-12">
+      <div className="pt-12" key={e.key}>
         <input
           type="text"
           className="rounded bg-slate-200 w-full pl-1"
           placeholder={e.label}
-          key={e.key}
         />
       </div>
     );
@@ -70,23 +69,26 @@ function SecondRowScopes(props: any) {
 function App() {
   return (
     <main className="bg-amber-100 h-screen font-source w-full ">
-      <div className="w-11/12 m-auto">
-        <div className="header">
-          <h1 className="text-center pt-4 text-3xl font-semibold">ZSC</h1>
+      <form>
+        <div className="w-11/12 m-auto">
+          <div className="header">
+            <h1 className="text-center pt-4 text-3xl font-semibold">ZSC</h1>
+          </div>
+
+          <div className="flex flex-wrap justify-between pt-10">
+            <FirstRowScopes prop={scopeValue1} />
+          </div>
+          <div className="flex flex-wrap justify-between pt-8">
+            <SecondRowScopes prop={scopeValue2} />
+          </div>
+          <NonScopeInputs prop={nonScopeInputNames} />
         </div>
-        <div className="flex flex-wrap justify-between pt-10">
-          <FirstRowScopes prop={scopeValue1} />
+        <div className="button-container text-center">
+          <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12">
+            CONVERT
+          </button>
         </div>
-        <div className="flex flex-wrap justify-between pt-8">
-          <SecondRowScopes prop={scopeValue2} />
-        </div>
-        <NonScopeInputs prop={nonScopeInputNames} />
-      </div>
-      <div className="button-container text-center">
-        <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12">
-          CONVERT
-        </button>
-      </div>
+      </form>
     </main>
   );
 }
