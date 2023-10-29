@@ -17,6 +17,7 @@ function NonScopeInputs(props: any) {
           type="text"
           className="rounded bg-slate-200 w-full pl-1"
           placeholder={e.label}
+          key={e.key}
         />
       </div>
     );
@@ -75,6 +76,11 @@ function App() {
           />
         </div>
         <NonScopeInputs prop={nonScopeInputNames} />
+      </div>
+      <div className="button-container text-center">
+        <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12">
+          CONVERT
+        </button>
       </div>
     </main>
   );
