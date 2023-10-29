@@ -24,6 +24,49 @@ function NonScopeInputs(props: any) {
   });
   return <>{mapped}</>;
 }
+
+const scopeValue1 = [
+  { scope: "1x", key: "1" },
+  { scope: "1.5x", key: "2" },
+  { scope: "2x", key: "3" },
+  { scope: "2.5x", key: "4" },
+];
+
+function FirstRowScopes(props: any) {
+  const mapped = props.prop.map((e: any) => {
+    return (
+      <input
+        type="text"
+        className="rounded w-14 bg-slate-200 text-center"
+        placeholder={e.scope}
+        key={e.key}
+      />
+    );
+  });
+  return <>{mapped}</>;
+}
+
+const scopeValue2 = [
+  { scope: "3x", key: "1" },
+  { scope: "4x", key: "2" },
+  { scope: "5x", key: "3" },
+  { scope: "12x", key: "4" },
+];
+
+function SecondRowScopes(props: any) {
+  const mapped = props.prop.map((e: any) => {
+    return (
+      <input
+        type="text"
+        className="rounded w-14 bg-slate-200 text-center"
+        placeholder={e.scope}
+        key={e.key}
+      />
+    );
+  });
+  return <>{mapped}</>;
+}
+
 function App() {
   return (
     <main className="bg-amber-100 h-screen font-source w-full ">
@@ -32,48 +75,10 @@ function App() {
           <h1 className="text-center pt-4 text-3xl font-semibold">ZSC</h1>
         </div>
         <div className="flex flex-wrap justify-between pt-10">
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="1x"
-          />
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="1.5x"
-          />
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="2x"
-          />
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="2.5x"
-          />
+          <FirstRowScopes prop={scopeValue1} />
         </div>
         <div className="flex flex-wrap justify-between pt-8">
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="3x"
-          />
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="4x"
-          />
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="5x"
-          />
-          <input
-            type="text"
-            className="rounded w-14 bg-slate-200 text-center"
-            placeholder="12x"
-          />
+          <SecondRowScopes prop={scopeValue2} />
         </div>
         <NonScopeInputs prop={nonScopeInputNames} />
       </div>
