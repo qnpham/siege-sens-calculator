@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+
 import "./App.css";
 
 type customInputType = {
@@ -89,26 +90,37 @@ const convertedRow2: convertType[] = [
 ];
 
 function ConvertRow1(props: { convertedRow1: convertType[] }) {
-  const mapped = props.convertedRow1.map((e: any, i: number) => (
-    <span key={i}>
-      {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
-    </span>
-  ));
-  return mapped;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const mapped = props.convertedRow1.map((e: any, i: number) => {
+    return (
+      <span key={i}>
+        {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
+      </span>
+    );
+  });
+  return <>{mapped}</>;
 }
 
 function ConvertRow2(props: { convertedRow2: convertType[] }) {
-  const mapped = props.convertedRow2.map((e: any, i: number) => (
-    <span key={i}>
-      {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
-    </span>
-  ));
-  return mapped;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const mapped = props.convertedRow2.map((e: any, i: number) => {
+    return (
+      <span key={i}>
+        {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
+      </span>
+    );
+  });
+  return <>{mapped}</>;
 }
 
-let converted: boolean = true;
-
 function App() {
+  const [converted, setConverted] = useState(false);
+
+  function convertHandler(e: any) {
+    e.preventDefault();
+    setConverted(true);
+  }
+
   if (converted === false) {
     return (
       <main className="bg-amber-100 h-screen font-source w-full ">
@@ -128,7 +140,10 @@ function App() {
             <NonScopeInputs prop={nonScopeInputNames} />
           </div>
           <div className="button-container text-center">
-            <button className="bg-yellow-600 text-gray-100 p-1.5 mt-12 sm:w-24 sm:h-11 md:w-32 md:h-12 md:text-xl lg:w-40 lg:h-16 lg:text-2xl">
+            <button
+              onClick={convertHandler}
+              className="bg-yellow-600 text-gray-100 p-1.5 mt-12 sm:w-24 sm:h-11 md:w-32 md:h-12 md:text-xl lg:w-40 lg:h-16 lg:text-2xl"
+            >
               CONVERT
             </button>
           </div>
