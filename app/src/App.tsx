@@ -70,26 +70,26 @@ function SecondRowScopes(props: customInputType) {
   return <>{mapped}</>;
 }
 
-type convertObject = {
+type convertType = {
   [key: string]: number;
 };
 
-const convertedRow1: object = [
+const convertedRow1: convertType[] = [
   { "1x": 30 },
   { "2x": 40 },
   { "3x": 43 },
   { "5x": 43 },
 ];
 
-const convertedRow2: object = [
+const convertedRow2: convertType[] = [
   { "1.5x": 30 },
   { "2.5x": 40 },
   { "4x": 43 },
   { "12x": 43 },
 ];
 
-function ConvertRow1(props: any) {
-  const mapped = props.prop.map((e: any, i: number) => (
+function ConvertRow1(props: { convertedRow1: convertType[] }) {
+  const mapped = props.convertedRow1.map((e: any, i: number) => (
     <span key={i}>
       {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
     </span>
@@ -97,8 +97,8 @@ function ConvertRow1(props: any) {
   return mapped;
 }
 
-function ConvertRow2(props: any) {
-  const mapped = props.prop.map((e: any, i: number) => (
+function ConvertRow2(props: { convertedRow2: convertType[] }) {
+  const mapped = props.convertedRow2.map((e: any, i: number) => (
     <span key={i}>
       {Object.keys(e)[0]}:{e[Object.keys(e)[0]]}
     </span>
@@ -148,10 +148,10 @@ function App() {
           <h1 className="text-center pt-5 text-2xl font-bold">cm/360</h1>
           <div className="dark-background bg-amber-200 w-80 h-40 m-auto mt-3">
             <div className="flex justify-around">
-              <ConvertRow1 prop={convertedRow1} />
+              <ConvertRow1 convertedRow1={convertedRow1} />
             </div>
             <div className="flex justify-around">
-              <ConvertRow2 prop={convertedRow2} />
+              <ConvertRow2 convertedRow2={convertedRow2} />
             </div>
           </div>
         </div>
